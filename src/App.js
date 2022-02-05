@@ -1,10 +1,13 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
 import Details from './components/Details/Details';
+import useStyles from './styles';
 function App() {
+	const classes = useStyles();
 	return (
 		<div>
 			<Grid
+				className={classes.grid}
 				container
 				spacing={0}
 				alignItems='center'
