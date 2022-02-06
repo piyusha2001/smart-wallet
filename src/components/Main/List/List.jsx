@@ -9,11 +9,14 @@ import {
 	Slide,
 } from '@material-ui/core';
 import { Delete, MoneyOff } from '@material-ui/icons';
-import React from 'react';
+import React, { useContext } from 'react';
 import useStyles from './styles';
+import { ExpenseTrackerContext } from '../../../context/context';
 
 function List() {
 	const classes = useStyles();
+	const { deleteTransaction } = useContext(ExpenseTrackerContext);
+
 	const transactions = [
 		{
 			id: 1,
