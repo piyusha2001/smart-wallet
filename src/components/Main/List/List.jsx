@@ -1,15 +1,15 @@
-import React from 'react';
 import {
+	Avatar,
+	IconButton,
 	List as MUIList,
 	ListItem,
 	ListItemAvatar,
-	Avatar,
-	ListItemText,
 	ListItemSecondaryAction,
-	IconButton,
+	ListItemText,
 	Slide,
 } from '@material-ui/core';
 import { Delete, MoneyOff } from '@material-ui/icons';
+import React from 'react';
 import useStyles from './styles';
 
 function List() {
@@ -20,7 +20,21 @@ function List() {
 			type: 'Income',
 			category: 'Salary',
 			amount: 50,
-			date: new Date(),
+			date: 'wed dec 16',
+		},
+		{
+			id: 2,
+			type: 'Income',
+			category: 'Salary',
+			amount: 50,
+			date: 'wed dec 16',
+		},
+		{
+			id: 3,
+			type: 'Expense',
+			category: 'Salary',
+			amount: 50,
+			date: 'wed dec 16',
 		},
 	];
 	return (
