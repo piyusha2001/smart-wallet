@@ -10,6 +10,10 @@ import {
 } from '@material-ui/core';
 import React, { useContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import {
+	expenseCategories,
+	incomeCategories,
+} from '../../../constants/categories';
 import { ExpenseTrackerContext } from '../../../context/context';
 import useStyles from './styles';
 
@@ -33,6 +37,9 @@ function Form() {
 		addTransaction(transaction);
 		setFormData(initialState);
 	};
+
+	const selectedCategories =
+		formData.type === 'Income' ? incomeCategories : expenseCategories;
 
 	return (
 		<Grid container spacing={2}>
@@ -67,8 +74,11 @@ function Form() {
 							})
 						}
 					>
-						<MenuItem value='business'>Business</MenuItem>
-						<MenuItem value='salary'>Salary</MenuItem>
+						{selectedCategories.map((c) => (
+							<MenuItem key={c.type} value={c.type}>
+								{c.type}
+							</MenuItem>
+						))}
 					</Select>
 				</FormControl>
 			</Grid>
