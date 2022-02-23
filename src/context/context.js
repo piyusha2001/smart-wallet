@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from 'react';
+import React, { createContext, useReducer } from 'react';
 import contextReducer from './contextReducer';
 const initialState = [];
 
@@ -11,7 +11,7 @@ export const Provider = ({ children }) => {
 	const deleteTransaction = (id) => {
 		dispatch({ type: 'DELETE_TRANSACTION', payload: id });
 	};
-
+	console.log(transactions);
 	const addTransaction = (transaction) => {
 		dispatch({ type: 'ADD_TRANSACTION', payload: transaction });
 	};
