@@ -10,10 +10,12 @@ import {
 } from '@material-ui/core';
 import React, { useContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import formatDate from '../../../utils/formatDate';
 import {
 	expenseCategories,
 	incomeCategories,
 } from '../../../constants/categories';
+
 import { ExpenseTrackerContext } from '../../../context/context';
 import useStyles from './styles';
 
@@ -21,7 +23,7 @@ const initialState = {
 	amount: '',
 	category: '',
 	type: 'Income',
-	date: new Date(),
+	date: formatDate(new Date()),
 };
 function Form() {
 	const classes = useStyles();
@@ -105,7 +107,7 @@ function Form() {
 					onChange={(e) =>
 						setFormData({
 							...formData,
-							date: e.target.value,
+							date: formatDate(e.target.value),
 						})
 					}
 				/>
