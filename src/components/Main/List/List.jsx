@@ -9,35 +9,15 @@ import {
 	Slide,
 } from '@material-ui/core';
 import { Delete, MoneyOff } from '@material-ui/icons';
-import React from 'react';
+import React, { useContext } from 'react';
+import { ExpenseTrackerContext } from '../../../context/context';
 import useStyles from './styles';
 
 function List() {
 	const classes = useStyles();
-
-	const transactions = [
-		{
-			id: 1,
-			type: 'Income',
-			category: 'Salary',
-			amount: 50,
-			date: 'wed dec 16',
-		},
-		{
-			id: 2,
-			type: 'Income',
-			category: 'Salary',
-			amount: 50,
-			date: 'wed dec 16',
-		},
-		{
-			id: 3,
-			type: 'Expense',
-			category: 'Salary',
-			amount: 50,
-			date: 'wed dec 16',
-		},
-	];
+	const { deleteTransaction, transactions } = useContext(
+		ExpenseTrackerContext,
+	);
 	return (
 		<MUIList dense={false} className={classes.list}>
 			{transactions.map((transaction) => (
