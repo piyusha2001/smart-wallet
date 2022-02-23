@@ -48,7 +48,9 @@ function List() {
 							<IconButton
 								edge='end'
 								aria-label='delete'
-								onClick=''
+								onClick={() =>
+									deleteTransaction(transaction.id)
+								}
 							>
 								<Delete />
 							</IconButton>
