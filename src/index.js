@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { Provider, SpeechProvider } from './context/context';
 import './index.css';
-import { Provider } from './context/context';
 ReactDOM.render(
-	<Provider>
-		<App />
-	</Provider>,
+	<SpeechProvider
+		appId='bda5ce26-6275-40b3-899c-01d30a0be6cd'
+		language='en-US'
+	>
+		<Provider>
+			<App />
+		</Provider>
+	</SpeechProvider>,
 	document.getElementById('root'),
 );
 
