@@ -31,7 +31,7 @@ function Main() {
 					Try saying: Add income for $100 in Category Salary for
 					Monday..
 				</Typography>
-				<Divider />
+				<Divider className={classes.divider} />
 				<Form />
 			</CardContent>
 			<CardContent className={classes.cardContent}>
