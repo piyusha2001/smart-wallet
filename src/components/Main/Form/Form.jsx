@@ -8,16 +8,15 @@ import {
 	TextField,
 	Typography,
 } from '@material-ui/core';
-import React, { useContext, useState } from 'react';
 import { useSpeechContext } from '@speechly/react-client';
+import React, { useContext, useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import formatDate from '../../../utils/formatDate';
 import {
 	expenseCategories,
 	incomeCategories,
 } from '../../../constants/categories';
-
 import { ExpenseTrackerContext } from '../../../context/context';
+import formatDate from '../../../utils/formatDate';
 import useStyles from './styles';
 
 const initialState = {
@@ -30,6 +29,7 @@ function Form() {
 	const classes = useStyles();
 	const [formData, setFormData] = useState(initialState);
 	const { addTransaction } = useContext(ExpenseTrackerContext);
+	const { segment } = useSpeechContext();
 
 	const createTransaction = () => {
 		const transaction = {
@@ -48,7 +48,7 @@ function Form() {
 		<Grid container spacing={2}>
 			<Grid item xs={12}>
 				<Typography align='center' variant='subtitle1' gutterBottom>
-					...
+					{segment && segment.words.map((w) => w.value).join(' ')}
 				</Typography>
 			</Grid>
 			<Grid item xs={6}>
