@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import {
 	Button,
 	FormControl,
@@ -17,6 +18,7 @@ import {
 } from '../../../constants/categories';
 import { ExpenseTrackerContext } from '../../../context/context';
 import formatDate from '../../../utils/formatDate';
+import CustomizedSnackbar from '../../Snackbar/Snackbar';
 import useStyles from './styles';
 
 const initialState = {
@@ -30,6 +32,7 @@ function Form() {
 	const [formData, setFormData] = useState(initialState);
 	const { addTransaction } = useContext(ExpenseTrackerContext);
 	const { segment } = useSpeechContext();
+	const [open, setOpen] = useState(false);
 
 	const createTransaction = () => {
 		const transaction = {
@@ -37,6 +40,7 @@ function Form() {
 			amount: Number(formData.amount),
 			id: uuidv4(),
 		};
+		setOpen(true);
 		addTransaction(transaction);
 		setFormData(initialState);
 	};
@@ -116,6 +120,7 @@ function Form() {
 
 	return (
 		<Grid container spacing={2}>
+			<CustomizedSnackbar open={open} setOpen={setOpen} />
 			<Grid item xs={12}>
 				<Typography align='center' variant='subtitle1' gutterBottom>
 					{segment && segment.words.map((w) => w.value).join(' ')}
