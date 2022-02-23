@@ -8,7 +8,9 @@ import {
 	TextField,
 	Typography,
 } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { ExpenseTrackerContext } from '../../../context/context';
 import useStyles from './styles';
 
 const initialState = {
@@ -20,6 +22,18 @@ const initialState = {
 function Form() {
 	const classes = useStyles();
 	const [formData, setFormData] = useState(initialState);
+	const { addTransaction } = useContext(ExpenseTrackerContext);
+
+	const createTransaction = () => {
+		const transaction = {
+			...formData,
+			amount: Number(formData.amount),
+			id: uuidv4(),
+		};
+		addTransaction(transaction);
+		setFormData(initialState);
+	};
+
 	return (
 		<Grid container spacing={2}>
 			<Grid item xs={12}>
@@ -90,6 +104,7 @@ function Form() {
 				className={classes.button}
 				variant='outlined'
 				color='primary'
+				onClick={createTransaction}
 				fullWidth
 			>
 				CREATE
