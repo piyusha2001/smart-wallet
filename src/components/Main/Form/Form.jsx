@@ -9,6 +9,7 @@ import {
 	Typography,
 } from '@material-ui/core';
 import React, { useContext, useState } from 'react';
+import { useSpeechContext } from '@speechly/react-client';
 import { v4 as uuidv4 } from 'uuid';
 import formatDate from '../../../utils/formatDate';
 import {
