@@ -1,7 +1,8 @@
+import { SpeechProvider } from '@speechly/react-client';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { Provider, SpeechProvider } from './context/context';
+import { Provider } from './context/context';
 import './index.css';
 ReactDOM.render(
 	<SpeechProvider
